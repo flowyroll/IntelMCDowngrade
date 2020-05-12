@@ -6,4 +6,5 @@ A set of scripts to apply different/old microcodes on Intel CPUs.
 * `./install_mc.sh <microcode_file_name>` to apply the microcode. 
 
 ### WARNING
-These scripts are only for research purpose. Downgrade microcodes on your own risk. 
+These scripts are only for research purpose. Downgrade microcodes on your own risk!!!
+ 
