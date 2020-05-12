@@ -1,0 +1,3 @@
+[submodule "CPUMicrocodes"]
+	path = CPUMicrocodes
+	url = git@github.com:platomav/CPUMicrocodes.git
