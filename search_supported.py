@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import subprocess
+import glob
 
 def run_cmd(cmdstr):
     cmd = cmdstr.split()
@@ -17,14 +18,13 @@ def cpuid():
 
 
 def main():
-    applicable_mc = []
     c = 0
+    _id = cpuid()
     print ("[!] Searching for supported microcodes...")
-    for line in run_cmd('ls Intel/').split("\n"):
-        tag = "cpu%s"%hex(cpuid())[2:].upper()
+    for line in glob.glob("Intel/*"):
+        tag = "Intel/cpu%s"%hex(_id)[2:].upper()
         if line.startswith(tag):
             print("\t", c, line)
-            applicable_mc.append(line)
             c += 1
 
 if __name__ == "__main__":
