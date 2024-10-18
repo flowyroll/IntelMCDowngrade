@@ -14,18 +14,27 @@ def cpuid():
     for r in regs_raw:
         x = r.split('=')
         regs.update({x[0]: int(x[1], 16)})
-    return regs['eax']
+    print(regs['eax'])
+    return regs['eax'] 
 
 
 def main():
     c = 0
-    _id = cpuid()
+    _id = hex(cpuid())[2:].zfill(8).upper()
     print ("[!] Searching for supported microcodes...")
     for line in glob.glob("Intel/*"):
-        tag = "Intel/cpu%s"%hex(_id)[2:].upper()
+        tag = "Intel/cpu%s"%_id
         if line.startswith(tag):
             print("\t", c, line)
             c += 1
+
+    for line in glob.glob("AMD/*"):
+        tag = "AMD/cpu%s"%_id
+        if line.startswith(tag):
+            print(line)
+            print("\t", c, line)
+            c += 1
+
 
 if __name__ == "__main__":
     main()
