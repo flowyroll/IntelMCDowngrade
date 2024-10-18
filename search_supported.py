@@ -20,7 +20,7 @@ def cpuid():
 
 def main():
     c = 0
-    _id = hex(cpuid())[2:].zfill(8).upper()
+    _id = hex(cpuid())[2:].upper()
     print ("[!] Searching for supported microcodes...")
     for line in glob.glob("Intel/*"):
         tag = "Intel/cpu%s"%_id
@@ -28,6 +28,7 @@ def main():
             print("\t", c, line)
             c += 1
 
+    _id = hex(cpuid())[2:].zfill(8).upper()
     for line in glob.glob("AMD/*"):
         tag = "AMD/cpu%s"%_id
         if line.startswith(tag):
